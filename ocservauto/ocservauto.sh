@@ -333,12 +333,12 @@ function get_Custom_configuration_2(){
         fast_Default_Ask "$OC_version_latest is the latest,but default version is recommended.Which to choose?" "$Default_oc_version" "oc_version"
     }
 #which port to use for verification 选择验证端口
-    fast_Default_Ask "Which port to use for verification?(Tcp-Port)" "999" "ocserv_tcpport_set"
+    fast_Default_Ask "Which port to use for verification?(Tcp-Port)" "443" "ocserv_tcpport_set"
 #tcp-port only or not 是否仅仅使用tcp端口，即是否禁用udp
     fast_Default_Ask "Only use tcp-port or not?(y/n)" "n" "only_tcp_port"
 #which port to use for data transmission 选择udp端口 即专用数据传输的udp端口
     if [ "$only_tcp_port" = "n" ]; then
-        fast_Default_Ask "Which port to use for data transmission?(Udp-Port)" "1999" "ocserv_udpport_set"
+        fast_Default_Ask "Which port to use for data transmission?(Udp-Port)" "53" "ocserv_udpport_set"
     fi
 #boot from the start 是否开机自起
     fast_Default_Ask "Start ocserv when system is started?(y/n)" "y" "ocserv_boot_start"
@@ -359,7 +359,7 @@ function add_a_user(){
         done
         Default_Ask "Input your password for your p12-cert file." "$(get_random_word 4)" "password"
 #set expiration days for client p12-cert 设定客户端证书到期天数
-        Default_Ask "Input the number of expiration days for your p12-cert file." "7777" "oc_ex_days"
+        Default_Ask "Input the number of expiration days for your p12-cert file." "365" "oc_ex_days"
     fi
 }
 
